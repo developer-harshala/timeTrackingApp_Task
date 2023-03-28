@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import CreateProject from './component/CreateProject'
 
-function App() {
+import { Provider } from 'react-redux'
+import store from './utils/store'
+import CreateTask from './component/CreateTask'
+import ShowTask from './component/ShowTask'
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Provider store={store}>
+      <div className='App'>
+        <h4 className='d-flex bg-danger justify-content-center p-2 text-white'>
+          Project time tracker
+        </h4>
+        <div className='row'>
+          <div className='col-6'>
+            <CreateProject />
+          </div>
+          <div className='col-6'>
+            <CreateTask />
+            <ShowTask />
+          </div>
+        </div>
+      </div>
+    </Provider>
+  )
 }
 
-export default App;
+export default App
